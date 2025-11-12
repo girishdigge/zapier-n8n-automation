@@ -26,6 +26,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 
 const loginSchema = z.object({
   email: z.email('Please enter a valid email address'),
@@ -65,7 +66,7 @@ export function LoginForm() {
   const isPending = form.formState.isSubmitting;
 
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='flex flex-col min-w-sm gap-6'>
       <Card>
         <CardHeader className='text-center'>
           <CardTitle>Welcome Back</CardTitle>
@@ -82,6 +83,12 @@ export function LoginForm() {
                     type='button'
                     disabled={isPending}
                   >
+                    <Image
+                      src={'/logos/github.svg'}
+                      width={20}
+                      height={20}
+                      alt='github image'
+                    />
                     Contine with Github
                   </Button>
                   <Button
@@ -90,6 +97,12 @@ export function LoginForm() {
                     type='button'
                     disabled={isPending}
                   >
+                    <Image
+                      src={'/logos/google.svg'}
+                      width={20}
+                      height={20}
+                      alt='google image'
+                    />
                     Contine with Google
                   </Button>
                 </div>

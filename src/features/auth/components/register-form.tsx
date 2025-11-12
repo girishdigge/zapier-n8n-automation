@@ -26,6 +26,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 
 const registerSchema = z
   .object({
@@ -74,7 +75,7 @@ export function RegisterForm() {
   const isPending = form.formState.isSubmitting;
 
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='flex flex-col min-w-sm gap-6'>
       <Card>
         <CardHeader className='text-center'>
           <CardTitle>Get Started</CardTitle>
@@ -84,6 +85,36 @@ export function RegisterForm() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className='grid gap-6'>
+                <div className='flex flex-col gap-4'>
+                  <Button
+                    variant={'outline'}
+                    className='w-full'
+                    type='button'
+                    disabled={isPending}
+                  >
+                    <Image
+                      src={'/logos/github.svg'}
+                      width={20}
+                      height={20}
+                      alt='github image'
+                    />
+                    Contine with Github
+                  </Button>
+                  <Button
+                    variant={'outline'}
+                    className='w-full'
+                    type='button'
+                    disabled={isPending}
+                  >
+                    <Image
+                      src={'/logos/google.svg'}
+                      width={20}
+                      height={20}
+                      alt='google image'
+                    />
+                    Contine with Google
+                  </Button>
+                </div>
                 <div className='grid gap-6'>
                   <FormField
                     control={form.control}
